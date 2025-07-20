@@ -1,0 +1,42 @@
+- name: Configure MIG and Deploy Petclinic
+  hosts: mig
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+    
+    - name: Start Docker Service
+      service: 
+        name: docker
+        state: started
+        enabled: yes
+    
+    - name: Pull Petclinic Image from DockerHub
+      docker_image:
+        name: smancic/main
+        source: pull
+
+    - name: Stop Apache
+      service:
+        name: apache2
+        state: stopped
+        enabled: false
+      ignore_errors: true
+    
+    - name: Run Petclinic container
+      docker_container:
+        name: petclinic
+        image: smancic/main
+        state: started
+        restart_policy: always
+        ports:
+          - "80:8080"
+
+        
