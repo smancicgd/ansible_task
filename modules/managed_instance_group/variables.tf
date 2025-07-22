@@ -68,3 +68,8 @@ variable "health_check" {
   type        = string
   description = "Self link to health check"
 }
+
+variable "role_label" {
+  type        = string
+  description = "Role label value"
+}

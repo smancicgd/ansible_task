@@ -71,6 +71,12 @@ variable "temp_instance_tags" {
   description = "Tag to add to temporary instance"
 }
 
+variable "temp_instance_label" {
+  type        = string
+  default = "jumpbox"
+  description = "Label role for the jumpbox instance"
+}
+
 variable "mig_base_instance_name" {
   type        = string
   description = "Base instance name for all instances in managed instance group"
@@ -114,6 +120,12 @@ variable "mig_instance_template_name" {
 variable "mig_name" {
   type        = string
   description = "Name of the managed instance group"
+}
+
+variable "mig_label" {
+  type        = string
+  default = "mig"
+  description = "Label role for instances in the managed instance group"
 }
 
 variable "lb_backend_name" {

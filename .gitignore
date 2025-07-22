@@ -31,3 +31,5 @@ terraform.tfvars
 # OS specific files
 .DS_Store
 Thumbs.db
+
+gcp_compute.yml

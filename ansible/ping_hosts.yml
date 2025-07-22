@@ -1,0 +1,11 @@
+- name: Ping MIG
+  hosts: mig
+  gather_facts: false
+
+  tasks:
+    - name: Pint MIG through jumpbox
+      ansible.builtin.ping:
+      vars: 
+        jumpbox_ip: "{{ groups['jumpbox'][0] }}"
+        ansible_ssh_common_args: "-o StrictHostKeyChecking=no -o ProxyJump=debian@{{ jumpbox_ip }}"
+

@@ -39,3 +39,8 @@ variable "temp_instance_tags" {
   type        = list(string)
   description = "Tag to add to temporary instance"
 }
+
+variable "role_label" {
+  type        = string
+  description = "Role label value"
+}

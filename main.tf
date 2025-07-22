@@ -41,6 +41,7 @@ module "compute" {
   subnet             = module.network.subnet_self_link
   temp_instance_name = var.temp_instance_name
   temp_instance_tags = var.temp_instance_tags
+  role_label = var.temp_instance_label
 }
 
 module "healthcheck" {
@@ -65,6 +66,8 @@ module "managed_instance_group" {
   mig_target_size             = var.mig_target_size
   mig_port_name               = var.mig_port_name
   mig_port_number             = var.mig_port_number
+  role_label = var.mig_label
+
 }
 
 module "load_balancer" {

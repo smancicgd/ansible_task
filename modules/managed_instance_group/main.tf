@@ -17,6 +17,10 @@ resource "google_compute_instance_template" "instance_template" {
     ssh-keys = "debian:${file("~/.ssh/id_rsa.pub")}"
   }
 
+  labels = {
+    role = var.role_label
+  }
+
   metadata_startup_script = file("${path.module}/../../scripts/startup.sh")
 
   tags = var.instance_tags

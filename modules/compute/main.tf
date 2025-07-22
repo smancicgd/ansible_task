@@ -19,5 +19,9 @@ resource "google_compute_instance" "temp_instance" {
     ssh-keys = "debian:${file("~/.ssh/id_rsa.pub")}"
   }
 
+  labels = {
+    role = var.role_label
+  }
+
   tags = var.temp_instance_tags
 }
